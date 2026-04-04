@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <title>Diagnostic Neuro-Sales — Emy Kae</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <script src="https://link.msgsndr.com/js/form_embed.js"></script>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --gold: #C9A96E; --gold-light: #E8D5A3; --gold-dark: #8B6914;
+      --bg: #080808; --card: #111111; --card2: #181818; --border: #222;
+      --text: #f0ead6; --muted: #4a4a4a; --muted2: #777;
+      --red: #E74C3C;
+    }
+    html { height: 100%; -webkit-text-size-adjust: 100%; }
+    body { min-height: 100%; background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+    .screen { display: none; min-height: 100vh; min-height: 100dvh; flex-direction: column; justify-content: center; align-items: center; padding: 40px 20px; opacity: 0; transition: opacity 0.5s ease; }
+    .screen.active { display: flex; }
+    .screen.visible { opacity: 1; }
+    .inner { width: 100%; max-width: 600px; }
+    .brand { font-size: 0.6rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--muted2); text-align: center; margin-bottom: 40px; }
+    .brand span { color: var(--gold); }
+    .gold-line { width: 40px; height: 1px; background: var(--gold); opacity: 0.3; margin: 20px auto; }
+    .hero-label { font-size: 0.6rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); text-align: center; margin-bottom: 20px; opacity: 0.7; }
+    .hero-title { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 5vw, 3rem); color: var(--text); text-align: center; line-height: 1.2; margin-bottom: 16px; }
+    .hero-title em { color: var(--gold); font-style: italic; }
+    .hero-sub { font-size: 0.88rem; color: var(--muted2); text-align: center; line-height: 1.8; max-width: 480px; margin: 0 auto 32px; }
+    .hero-sub strong { color: var(--text); font-weight: 500; }
+    .pills { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-bottom: 40px; }
+    .pill { background: rgba(201,169,110,0.07); border: 1px solid rgba(201,169,110,0.15); color: var(--gold); font-size: 0.68rem; padding: 5px 14px; border-radius: 20px; }
+    .btn { display: block; width: 100%; max-width: 340px; margin: 0 auto; background: var(--gold); color: #0a0a0a; font-weight: 600; font-size: 0.82rem; letter-spacing: 0.12em; text-transform: uppercase; padding: 18px 32px; border-radius: 50px; border: none; cursor: pointer; transition: all 0.25s; font-family: 'Inter', sans-serif; -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
+    .btn:hover { background: var(--gold-light); }
+    .btn:active { transform: scale(0.98); }
+    .progress-wrap { margin-bottom: 36px; }
+    .progress-top { display: flex; justify-content: space-between; font-size: 0.68rem; color: var(--muted); margin-bottom: 10px; }
+    .progress-top span { color: var(--gold); font-weight: 600; }
+    .progress-track { height: 2px; background: var(--border); border-radius: 2px; }
+    .progress-fill { height: 100%; background: linear-gradient(to right, var(--gold-dark), var(--gold)); border-radius: 2px; transition: width 0.4s ease; }
+    .q-label { font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); opacity: 0.6; margin-bottom: 14px; }
+    .q-text { font-family: 'Playfair Display', serif; font-size: clamp(1.15rem, 3vw, 1.5rem); color: var(--text); line-height: 1.4; margin-bottom: 28px; }
+    .options { display: flex; flex-direction: column; gap: 10px; margin-bottom: 28px; }
+    .option { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 16px 18px; display: flex; align-items: center; gap: 14px; cursor: pointer; transition: all 0.2s; -webkit-tap-highlight-color: transparent; }
+    .option:hover { border-color: rgba(201,169,110,0.3); background: var(--card2); }
+    .option.selected { border-color: var(--gold); background: rgba(201,169,110,0.06); }
+    .opt-letter { width: 30px; height: 30px; border-radius: 50%; flex-shrink: 0; background: rgba(201,169,110,0.08); border: 1px solid rgba(201,169,110,0.2); display: flex; align-items: center; justify-content: center; font-size: 0.7rem; font-weight: 600; color: var(--gold); }
+    .option.selected .opt-letter { background: var(--gold); color: #0a0a0a; border-color: var(--gold); }
+    .opt-text { font-size: 0.82rem; color: var(--muted2); line-height: 1.5; }
+    .option.selected .opt-text { color: var(--text); }
+    #btn-next { opacity: 0; pointer-events: none; transition: opacity 0.3s; }
+    #btn-next.visible { opacity: 1; pointer-events: auto; }
+    .form-group { margin-bottom: 16px; }
+    .form-group label { display: block; font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted2); margin-bottom: 8px; }
+    .form-group input { width: 100%; background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 16px 18px; color: var(--text); font-size: 16px; font-family: 'Inter', sans-serif; outline: none; transition: border-color 0.2s; -webkit-appearance: none; }
+    .form-group input:focus { border-color: var(--gold); }
+    .form-group input::placeholder { color: var(--muted); }
+    .form-note { font-size: 0.68rem; color: var(--muted); text-align: center; margin-top: 16px; line-height: 1.6; }
+    .loader-wrap { text-align: center; }
+    .loader-dots { display: flex; justify-content: center; gap: 8px; margin-bottom: 24px; }
+    .loader-dots span { width: 10px; height: 10px; border-radius: 50%; background: var(--gold); animation: pulse 1.2s infinite ease-in-out; }
+    .loader-dots span:nth-child(2) { animation-delay: 0.2s; }
+    .loader-dots span:nth-child(3) { animation-delay: 0.4s; }
+    @keyframes pulse { 0%, 80%, 100% { opacity: 0.2; transform: scale(0.8); } 40% { opacity: 1; transform: scale(1); } }
+    .loader-text { font-size: 0.82rem; color: var(--muted2); }
+    .profile-badge { display: inline-block; background: rgba(201,169,110,0.1); border: 1px solid rgba(201,169,110,0.2); color: var(--gold); font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; padding: 6px 16px; border-radius: 20px; margin-bottom: 16px; }
+    .profile-title { font-family: 'Playfair Display', serif; font-size: clamp(1.5rem, 4vw, 2.2rem); color: var(--gold-light); line-height: 1.3; margin-bottom: 8px; }
+    .profile-title em { font-style: italic; }
+    .profile-intro { font-size: 0.85rem; color: var(--muted2); line-height: 1.8; margin-bottom: 24px; }
+    .insight-block, .cost-block { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 18px 20px; margin-bottom: 14px; }
+    .insight-block { border-left: 3px solid var(--gold); }
+    .cost-block { border-left: 3px solid var(--red); }
+    .insight-block h4, .cost-block h4 { font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 10px; }
+    .insight-block h4 { color: var(--gold); }
+    .cost-block h4 { color: var(--red); }
+    .insight-block p, .cost-block p { font-size: 0.8rem; color: var(--muted2); line-height: 1.8; }
+    .insight-block p strong, .cost-block p strong { color: var(--text); font-weight: 500; }
+    .cta-box { background: rgba(201,169,110,0.05); border: 1px solid rgba(201,169,110,0.15); border-radius: 14px; padding: 20px; margin: 24px 0; text-align: center; }
+    .cta-box p { font-size: 0.8rem; color: var(--muted2); line-height: 1.7; margin-bottom: 16px; }
+    .cta-box p strong { color: var(--gold-light); }
+@media (max-width: 480px) { .screen { padding: 28px 16px; } .option { padding: 14px 14px; gap: 12px; } .hero-title { font-size: clamp(1.6rem, 6vw, 2.4rem); } .brand { margin-bottom: 28px; } }
+  </style>
+</head>
+<body>
+
+  <div id="s0" class="screen active">
+    <div class="inner">
+      <div class="brand">Neuro-Sales Mastery&#8482; &#8212; <span>Emy Kae</span></div>
+      <p class="hero-label">Diagnostic gratuit &middot; 2 minutes</p>
+      <h1 class="hero-title">Quel est ton <em>blocage invisible</em> en vente ?</h1>
+      <p class="hero-sub">Ton cerveau a un <strong>pattern automatique</strong> qui sabote tes ventes &#8212; avant m&#234;me que tu t&#8217;en rendes compte.<br><br>5 questions. Un profil. Et enfin une explication <strong>neurologique</strong> de ce qui se passe vraiment.</p>
+      <div class="pills"><span class="pill">5 questions</span><span class="pill">Bas&#233; sur les neurosciences</span><span class="pill">R&#233;sultat imm&#233;diat</span></div>
+      <button class="btn" onclick="startDiag()">D&#233;couvrir mon profil &#8594;</button>
+    </div>
+  </div>
+
+  <div id="s-questions" class="screen">
+    <div class="inner">
+      <div class="progress-wrap"><div class="progress-top"><span id="q-counter">Question 1 / 5</span><span id="q-pct">0%</span></div><div class="progress-track"><div class="progress-fill" id="q-bar" style="width:0%"></div></div></div>
+      <p class="q-label" id="q-label">Question 1</p>
+      <h2 class="q-text" id="q-text"></h2>
+      <div class="options" id="q-options"></div>
+      <button class="btn" id="btn-next" onclick="nextQuestion()">Continuer &#8594;</button>
+    </div>
+  </div>
+
+  <div id="s-email" class="screen">
+    <div class="inner">
+      <div class="brand">Neuro-Sales Mastery&#8482; &#8212; <span>Emy Kae</span></div>
+      <p class="hero-label">Ton profil est pr&#234;t</p>
+      <h2 class="hero-title" style="font-size:clamp(1.3rem,3.5vw,1.9rem);margin-bottom:12px;">Entre tes coordonn&#233;es pour <em>voir ton r&#233;sultat</em></h2>
+      <p class="hero-sub" style="margin-bottom:20px;">Tu recevras aussi une analyse personnalis&#233;e par email avec des pistes concr&#232;tes.</p>
+      <div id="ghl-form-wrap" style="background:var(--card);border:1px solid var(--border);border-radius:14px;padding:16px;overflow:hidden;min-height:200px;">
+        <iframe id="ghl-iframe" style="width:100%;border:none;min-height:350px;" scrolling="no"></iframe>
+      </div>
+      <p class="form-note">Tes donn&#233;es restent confidentielles. Pas de spam, jamais.</p>
+      <button class="btn" id="btn-manual-next" onclick="onFormSubmitted()" style="margin-top:16px;opacity:0.5;background:transparent;border:1px solid var(--gold);color:var(--gold);font-size:0.72rem;">D&#233;j&#224; soumis ? Voir mon profil &#8594;</button>
+    </div>
+  </div>
+
+  <div id="s-loading" class="screen">
+    <div class="inner"><div class="loader-wrap"><div class="loader-dots"><span></span><span></span><span></span></div><p class="loader-text">Analyse de ton profil en cours...</p></div></div>
+  </div>
+
+  <div id="s-result" class="screen">
+    <div class="inner">
+      <div class="brand">Neuro-Sales Mastery&#8482; &#8212; <span>Emy Kae</span></div>
+      <div id="result-content"></div>
+    </div>
+  </div>
+
+
+<script>
+  var GHL_BOOKING_URL = 'LIEN_BOOKING_GHL_ICI';
+  var GHL_FORM_ID = 'sMQcBPmKew6STYrwSHDp';
+
+  var questions = [
+    { text: "Au moment d\u2019annoncer ton prix, qu\u2019est-ce qui se passe en toi ?",
+      options: [
+        { letter: 'A', text: "Je ressens un malaise, j\u2019adoucis ou j\u2019h\u00e9site", value: "A \u2014 Malaise, adoucit ou h\u00e9site." },
+        { letter: 'B', text: "Je m\u2019adapte selon l\u2019\u00e9nergie du prospect, pas de process fixe", value: "B \u2014 S\u2019adapte, pas de processus fixe" },
+        { letter: 'C', text: "Je suis \u00e0 l\u2019aise sur les prix, mais je bute au moment de demander la d\u00e9cision", value: "C \u2014 \u00c0 l\u2019aise sur les prix, bute \u00e0 la d\u00e9cision." }
+      ] },
+    { text: "Le rapport entre ce que tu vaux et ce que tu factures ?",
+      options: [
+        { letter: 'A', text: "Je sais que je vaux plus mais je n\u2019arrive pas \u00e0 franchir le cap", value: "A \u2014 Sait valoir plus, n\u2019arrive pas \u00e0 franchir le cap" },
+        { letter: 'B', text: "Mes tarifs sont coh\u00e9rents mais je n\u2019ai pas de structure r\u00e9p\u00e9table", value: "B \u2014 Tarifs coh\u00e9rents, pas de structure r\u00e9p\u00e9table" },
+        { letter: 'C', text: "Mes prix sont bons, le probl\u00e8me c\u2019est apr\u00e8s \u2014 les prospects disparaissent", value: "C \u2014 Prix bons, prospects disparaissent apr\u00e8s" }
+      ] },
+    { text: "O\u00f9 tu perds le plus de ventes ?",
+      options: [
+        { letter: 'A', text: "Avant m\u00eame le call \u2014 je n\u2019ose pas proposer, j\u2019attends qu\u2019on vienne \u00e0 moi", value: "A \u2014 Avant le call, n\u2019ose pas proposer" },
+        { letter: 'B', text: "Mes ventes fonctionnent mais elles d\u00e9pendent trop de moi", value: "B \u2014 Ventes d\u00e9pendent trop de lui/elle" },
+        { letter: 'C', text: "Pendant ou apr\u00e8s le call \u2014 \u00abje r\u00e9fl\u00e9chis\u00bb et ils ne reviennent pas", value: "C \u2014 Pendant/apr\u00e8s le call, je r\u00e9fl\u00e9chis." }
+      ] },
+    { text: "Face \u00e0 \u00abc\u2019est trop cher\u00bb ?",
+      options: [
+        { letter: 'A', text: "Je recule, je propose une remise pour ne pas perdre la vente", value: "A \u2014 Recule, proposez une remise" },
+        { letter: 'B', text: "Pas de r\u00e9ponse standardis\u00e9e \u2014 j\u2019improvise, c\u2019est in\u00e9gal", value: "B \u2014 Improvise, pas de r\u00e9ponse standard" },
+        { letter: 'C', text: "Je tente de d\u00e9fendre le prix mais je ne sais pas retourner l\u2019objection", value: "C \u2014 D\u00e9fendez le prix sans retourner l\u2019objection." }
+      ] },
+    { text: "Ton vrai blocage pour doubler ton CA en 90 jours ?",
+      options: [
+        { letter: 'A', text: "Quelque chose en moi \u2014 ma posture, ma l\u00e9gitimit\u00e9, comment je me per\u00e7ois", value: "A \u2014 Posture, l\u00e9gitimit\u00e9, perception de soi" },
+        { letter: 'B', text: "Un syst\u00e8me \u2014 un process qui ne d\u00e9pend pas de mon \u00e9tat du jour", value: "B \u2014 Besoin d\u2019un syst\u00e8me/process" },
+        { letter: 'C', text: "Ma\u00eetriser la fin du call \u2014 demande de d\u00e9cision, objections, closing", value: "C \u2014 Ma\u00eetriser la fin du call, closing." }
+      ] }
+  ];
+
+  var profiles = {
+    A: { ghlValue: "L'Identit\u00e9 Sabot\u00e9e", badge: 'Profil A', emoji: '\ud83d\udc51',
+      title: "L\u2019<em>Identit\u00e9 Sabot\u00e9e</em>",
+      intro: "Tu n\u2019as pas un probl\u00e8me de technique. Tu as un probl\u00e8me de <strong>permission</strong>. Ton cerveau n\u2019a pas encore int\u00e9gr\u00e9 que tu m\u00e9rites le prix que tu sais valoir. R\u00e9sultat : tu h\u00e9sites au moment d\u2019annoncer, tu justifies ce qui ne devrait pas \u00eatre justifi\u00e9, et tu laisses partir des clients que tu aurais pu closer.",
+      neuro: { title: "Ce qui se passe dans ton cerveau", text: "L\u2019<strong>amygdale s\u2019active au moment de demander de l\u2019argent</strong>, comme si c\u2019\u00e9tait une menace sociale. Ce n\u2019est pas un d\u00e9faut de caract\u00e8re \u2014 c\u2019est neurologique. Le circuit limbique associe \u00abdemander son prix\u00bb \u00e0 un risque de rejet. Chez les femmes entrepreneures, cette r\u00e9ponse est amplifi\u00e9e par des ann\u00e9es de conditionnement social. Et \u00e7a se reprogramme." },
+      cost: { title: "Ce que \u00e7a te co\u00fbte", text: "Des ventes perdues avant m\u00eame d\u2019avoir propos\u00e9. Des prix en-dessous de ta valeur r\u00e9elle. Des remises automatiques que personne n\u2019a demand\u00e9es. <strong>Ce profil est souvent celui des personnes les plus comp\u00e9tentes \u2014 et les plus sous-pay\u00e9es.</strong>" }
+    },
+    B: { ghlValue: "Le Syst\u00e8me Fant\u00f4me", badge: 'Profil B', emoji: '\ud83d\udd27',
+      title: "Le <em>Syst\u00e8me Fant\u00f4me</em>",
+      intro: "Tu vends. Tu as des clients. Ton CA existe. Mais il repose sur toi \u00e0 100%. Quand tu es en forme, \u00e7a marche. Quand tu es absent ou d\u00e9bord\u00e9, \u00e7a s\u2019arr\u00eate. <strong>Ce n\u2019est pas un business. C\u2019est un emploi que tu t\u2019es cr\u00e9\u00e9.</strong>",
+      neuro: { title: "Ce qui se passe dans ton cerveau", text: "Le <strong>biais de contr\u00f4le</strong> est en jeu : la dopamine r\u00e9compense l\u2019action directe et personnelle. Ton cerveau a appris que \u00abvendre soi-m\u00eame = r\u00e9sultat\u00bb. Donc il te pousse \u00e0 tout faire toi-m\u00eame, m\u00eame quand c\u2019est contre ton int\u00e9r\u00eat \u00e0 long terme. Ce n\u2019est pas un probl\u00e8me de d\u00e9l\u00e9gation \u2014 c\u2019est un pattern neurochimique." },
+      cost: { title: "Ce que \u00e7a te co\u00fbte", text: "Un CA qui plafonne au niveau de ce que tu peux faire seul\u00b7e en un mois. Des cycles d\u2019\u00e9puisement/reprise. <strong>Tu ne scales pas \u2014 tu t\u2019\u00e9puises.</strong> Et les vacances sont un luxe que ton business ne peut pas se permettre." }
+    },
+    C: { ghlValue: "Le Closing Rat\u00e9", badge: 'Profil C', emoji: '\ud83c\udfaf',
+      title: "Le <em>Closing Rat\u00e9</em>",
+      intro: "Tu as le plus frustrant des profils. Tu fais presque tout bien. Tu attires. Tu engages. Tes calls se passent bien. Et puis \u00e0 la fin, quelque chose l\u00e2che. Le prospect dit \u00abje vais r\u00e9fl\u00e9chir\u00bb et dispara\u00eet.",
+      neuro: { title: "Ce qui se passe dans ton cerveau", text: "Ton cerveau per\u00e7oit la <strong>demande de d\u00e9cision comme une confrontation</strong>. Mont\u00e9e de cortisol. L\u2019instinct prend le dessus \u2014 \u00e9viter. Donc tu rallonges l\u2019appel, tu sur-expliques, tu n\u2019oses pas te taire apr\u00e8s avoir demand\u00e9. <strong>Les 5 derni\u00e8res minutes d\u2019un call = 80% du r\u00e9sultat.</strong> Et c\u2019est la partie la moins travaill\u00e9e." },
+      cost: { title: "Ce que \u00e7a te co\u00fbte", text: "Des dizaines de prospects qualifi\u00e9s qui repartent \u00abpour r\u00e9fl\u00e9chir\u00bb et ne reviennent jamais. Un taux de closing bien en-dessous de ton potentiel r\u00e9el. <strong>Ce profil est celui des personnes \u00e0 3 mois d\u2019un changement radical \u2014 si le bon travail est fait sur les 5 derni\u00e8res minutes du call.</strong>" }
+    }
+  };
+
+  var currentQ = 0, answers = [], answerValues = [];
+
+  function showScreen(id) {
+    document.querySelectorAll('.screen').forEach(function(s) { s.classList.remove('active', 'visible'); });
+    var el = document.getElementById(id);
+    el.classList.add('active');
+    requestAnimationFrame(function() { requestAnimationFrame(function() { el.classList.add('visible'); }); });
+    window.scrollTo(0, 0);
+  }
+
+  function startDiag() { currentQ = 0; answers = []; answerValues = []; showScreen('s-questions'); renderQuestion(); }
+
+  function renderQuestion() {
+    var q = questions[currentQ], pct = Math.round((currentQ / questions.length) * 100);
+    document.getElementById('q-counter').textContent = 'Question ' + (currentQ + 1) + ' / ' + questions.length;
+    document.getElementById('q-pct').textContent = pct + '%';
+    document.getElementById('q-bar').style.width = pct + '%';
+    document.getElementById('q-label').textContent = 'Question ' + (currentQ + 1);
+    document.getElementById('q-text').textContent = q.text;
+    var opts = document.getElementById('q-options'); opts.innerHTML = '';
+    q.options.forEach(function(opt) {
+      var div = document.createElement('div'); div.className = 'option';
+      div.innerHTML = '<div class="opt-letter">' + opt.letter + '</div><div class="opt-text">' + opt.text + '</div>';
+      div.onclick = function() { selectOption(div, opt.letter, opt.value); };
+      opts.appendChild(div);
+    });
+    var btn = document.getElementById('btn-next'); btn.classList.remove('visible');
+    btn.textContent = currentQ < questions.length - 1 ? 'Continuer \u2192' : 'Voir mon profil \u2192';
+  }
+
+  function selectOption(el, letter, value) {
+    document.querySelectorAll('#q-options .option').forEach(function(o) { o.classList.remove('selected'); });
+    el.classList.add('selected'); answers[currentQ] = letter; answerValues[currentQ] = value;
+    document.getElementById('btn-next').classList.add('visible');
+  }
+
+  function nextQuestion() {
+    if (answers[currentQ] === undefined) return;
+    currentQ++;
+    if (currentQ < questions.length) {
+      renderQuestion();
+    } else {
+      // Quiz done — load GHL form with pre-filled hidden fields
+      loadGHLForm();
+      showScreen('s-email');
+    }
+  }
+
+  function computeProfile() {
+    var counts = { A: 0, B: 0, C: 0 };
+    answers.forEach(function(a) { counts[a]++; });
+    if (counts.A >= counts.B && counts.A >= counts.C) return 'A';
+    if (counts.B >= counts.C) return 'B';
+    return 'C';
+  }
+
+  var savedProfileKey = '';
+
+  function loadGHLForm() {
+    savedProfileKey = computeProfile();
+    var profile = profiles[savedProfileKey];
+    // Build GHL form URL with pre-filled hidden field values as query params
+    var params = new URLSearchParams();
+    params.set('profile_diagnostic', profile.ghlValue);
+    params.set('q1_annoncer_prix', answerValues[0] || '');
+    params.set('q2_valeur_vs_tarif', answerValues[1] || '');
+    params.set('q3_ou_perds_ventes', answerValues[2] || '');
+    params.set('q4_objection_trop_cher', answerValues[3] || '');
+    params.set('q5_blocage_doubler_a', answerValues[4] || '');
+    var iframeSrc = 'https://api.leadconnectorhq.com/widget/form/' + GHL_FORM_ID + '?' + params.toString();
+    document.getElementById('ghl-iframe').src = iframeSrc;
+    // Listen for GHL form submission via postMessage
+    window.addEventListener('message', onGHLMessage);
+  }
+
+  function onGHLMessage(e) {
+    // GHL sends messages on form events — detect submission
+    if (e.origin && e.origin.indexOf('leadconnectorhq.com') !== -1) {
+      var data = e.data;
+      // GHL form_embed sends various messages; form submission triggers a thank-you state
+      if (typeof data === 'string' && (data.indexOf('formSubmitted') !== -1 || data.indexOf('thank') !== -1)) {
+        onFormSubmitted();
+      }
+      // Also check for object-style messages
+      if (typeof data === 'object' && data !== null) {
+        if (data.type === 'formSubmitted' || data.formSubmitted || data.action === 'formSubmitted') {
+          onFormSubmitted();
+        }
+      }
+    }
+  }
+
+  var formSubmitted = false;
+  function onFormSubmitted() {
+    if (formSubmitted) return;
+    formSubmitted = true;
+    window.removeEventListener('message', onGHLMessage);
+    showScreen('s-loading');
+    setTimeout(function() { showResult(savedProfileKey, ''); }, 2400);
+  }
+
+  function showResult(profileKey, prenom) {
+    var p = profiles[profileKey], nom = prenom ? ', ' + prenom : '';
+    var h = '<div style="margin-bottom:28px;">';
+    h += '<div class="profile-badge">' + p.emoji + ' ' + p.badge + '</div>';
+    h += '<p style="font-size:0.72rem;color:var(--muted2);margin-bottom:10px;">Ton profil dominant' + nom + ' :</p>';
+    h += '<h2 class="profile-title">' + p.title + '</h2>';
+    h += '<div class="gold-line" style="margin:16px 0;"></div>';
+    h += '<p class="profile-intro">' + p.intro + '</p>';
+    h += '<div class="insight-block"><h4>' + p.neuro.title + '</h4><p>' + p.neuro.text + '</p></div>';
+    h += '<div class="cost-block"><h4>' + p.cost.title + '</h4><p>' + p.cost.text + '</p></div>';
+    h += '<div class="cta-box"><p><strong>Ce diagnostic ne te donne pas une liste de techniques.</strong><br>Ce qui change vraiment, c\u2019est quand le pattern se d\u00e9fait \u00e0 la source \u2014 pas quand on applique un script par-dessus.</p>';
+    h += '<button class="btn" onclick="openBooking()">R\u00e9server un appel avec Emy \u2192</button></div></div>';
+    document.getElementById('result-content').innerHTML = h;
+    showScreen('s-result');
+  }
+
+  function openBooking() {
+    if (GHL_BOOKING_URL && GHL_BOOKING_URL !== 'LIEN_BOOKING_GHL_ICI') window.open(GHL_BOOKING_URL, '_blank');
+  }
+
+  document.getElementById('s0').classList.add('visible');
+</script>
+</body>
+</html>
