@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-  <title>Diagnostic Neuro-Sales — Emy Kae</title>
+  <title>Diagnostic Neuro-Sales - Emy Kae</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -86,10 +86,10 @@
 
   <div id="s0" class="screen active">
     <div class="inner">
-      <div class="brand">Neuro-Sales Mastery&#8482; &#8212; <span>Emy Kae</span></div>
+      <div class="brand">Neuro-Sales Mastery&#8482; - <span>Emy Kae</span></div>
       <p class="hero-label">Diagnostic gratuit &middot; 2 minutes</p>
       <h1 class="hero-title">Quel est ton <em>blocage invisible</em> en vente ?</h1>
-      <p class="hero-sub">Ton cerveau a un <strong>pattern automatique</strong> qui sabote tes ventes &#8212; avant m&#234;me que tu t&#8217;en rendes compte.<br><br>5 questions. Un profil. Et enfin une explication <strong>neurologique</strong> de ce qui se passe vraiment.</p>
+      <p class="hero-sub">Ton cerveau a un <strong>pattern automatique</strong> qui sabote tes ventes - avant m&#234;me que tu t&#8217;en rendes compte.<br><br>5 questions. Un profil. Et enfin une explication <strong>neurologique</strong> de ce qui se passe vraiment.</p>
       <div class="pills"><span class="pill">5 questions</span><span class="pill">Bas&#233; sur les neurosciences</span><span class="pill">R&#233;sultat imm&#233;diat</span></div>
       <button class="btn" onclick="startDiag()">D&#233;couvrir mon profil &#8594;</button>
     </div>
@@ -107,7 +107,7 @@
 
   <div id="s-email" class="screen">
     <div class="inner">
-      <div class="brand">Neuro-Sales Mastery&#8482; &#8212; <span>Emy Kae</span></div>
+      <div class="brand">Neuro-Sales Mastery&#8482; - <span>Emy Kae</span></div>
       <p class="hero-label">Ton profil est pr&#234;t</p>
       <h2 class="hero-title" style="font-size:clamp(1.3rem,3.5vw,1.9rem);margin-bottom:12px;">Entre tes coordonn&#233;es pour <em>voir ton r&#233;sultat</em></h2>
       <p class="hero-sub" style="margin-bottom:20px;">Tu recevras aussi une analyse personnalis&#233;e par email avec des pistes concr&#232;tes.</p>
@@ -129,7 +129,7 @@
 
   <div id="s-result" class="screen">
     <div class="inner">
-      <div class="brand">Neuro-Sales Mastery&#8482; &#8212; <span>Emy Kae</span></div>
+      <div class="brand">Neuro-Sales Mastery&#8482; - <span>Emy Kae</span></div>
       <div id="result-content"></div>
     </div>
   </div>
@@ -142,33 +142,33 @@
   var questions = [
     { text: "Au moment d\u2019annoncer ton prix, qu\u2019est-ce qui se passe en toi ?",
       options: [
-        { letter: 'A', text: "Je ressens un malaise, j\u2019adoucis ou j\u2019h\u00e9site", value: "A \u2014 Malaise, adoucit ou h\u00e9site." },
-        { letter: 'B', text: "Je m\u2019adapte selon l\u2019\u00e9nergie du prospect, pas de process fixe", value: "B \u2014 S\u2019adapte, pas de processus fixe" },
-        { letter: 'C', text: "Je suis \u00e0 l\u2019aise sur les prix, mais je bute au moment de demander la d\u00e9cision", value: "C \u2014 \u00c0 l\u2019aise sur les prix, bute \u00e0 la d\u00e9cision." }
+        { letter: 'A', text: "Je ressens un malaise, j\u2019adoucis ou j\u2019h\u00e9site", value: "A  - Malaise, adoucit ou h\u00e9site." },
+        { letter: 'B', text: "Je m\u2019adapte selon l\u2019\u00e9nergie du prospect, pas de process fixe", value: "B  - S\u2019adapte, pas de processus fixe" },
+        { letter: 'C', text: "Je suis \u00e0 l\u2019aise sur les prix, mais je bute au moment de demander la d\u00e9cision", value: "C  - \u00c0 l\u2019aise sur les prix, bute \u00e0 la d\u00e9cision." }
       ] },
     { text: "Le rapport entre ce que tu vaux et ce que tu factures ?",
       options: [
-        { letter: 'A', text: "Je sais que je vaux plus mais je n\u2019arrive pas \u00e0 franchir le cap", value: "A \u2014 Sait valoir plus, n\u2019arrive pas \u00e0 franchir le cap" },
-        { letter: 'B', text: "Mes tarifs sont coh\u00e9rents mais je n\u2019ai pas de structure r\u00e9p\u00e9table", value: "B \u2014 Tarifs coh\u00e9rents, pas de structure r\u00e9p\u00e9table" },
-        { letter: 'C', text: "Mes prix sont bons, le probl\u00e8me c\u2019est apr\u00e8s \u2014 les prospects disparaissent", value: "C \u2014 Prix bons, prospects disparaissent apr\u00e8s" }
+        { letter: 'A', text: "Je sais que je vaux plus mais je n\u2019arrive pas \u00e0 franchir le cap", value: "A  - Sait valoir plus, n\u2019arrive pas \u00e0 franchir le cap" },
+        { letter: 'B', text: "Mes tarifs sont coh\u00e9rents mais je n\u2019ai pas de structure r\u00e9p\u00e9table", value: "B  - Tarifs coh\u00e9rents, pas de structure r\u00e9p\u00e9table" },
+        { letter: 'C', text: "Mes prix sont bons, le probl\u00e8me c\u2019est apr\u00e8s  - les prospects disparaissent", value: "C  - Prix bons, prospects disparaissent apr\u00e8s" }
       ] },
     { text: "O\u00f9 tu perds le plus de ventes ?",
       options: [
-        { letter: 'A', text: "Avant m\u00eame le call \u2014 je n\u2019ose pas proposer, j\u2019attends qu\u2019on vienne \u00e0 moi", value: "A \u2014 Avant le call, n\u2019ose pas proposer" },
-        { letter: 'B', text: "Mes ventes fonctionnent mais elles d\u00e9pendent trop de moi", value: "B \u2014 Ventes d\u00e9pendent trop de lui/elle" },
-        { letter: 'C', text: "Pendant ou apr\u00e8s le call \u2014 \u00abje r\u00e9fl\u00e9chis\u00bb et ils ne reviennent pas", value: "C \u2014 Pendant/apr\u00e8s le call, je r\u00e9fl\u00e9chis." }
+        { letter: 'A', text: "Avant m\u00eame le call  - je n\u2019ose pas proposer, j\u2019attends qu\u2019on vienne \u00e0 moi", value: "A  - Avant le call, n\u2019ose pas proposer" },
+        { letter: 'B', text: "Mes ventes fonctionnent mais elles d\u00e9pendent trop de moi", value: "B  - Ventes d\u00e9pendent trop de lui/elle" },
+        { letter: 'C', text: "Pendant ou apr\u00e8s le call  - \u00abje r\u00e9fl\u00e9chis\u00bb et ils ne reviennent pas", value: "C  - Pendant/apr\u00e8s le call, je r\u00e9fl\u00e9chis." }
       ] },
     { text: "Face \u00e0 \u00abc\u2019est trop cher\u00bb ?",
       options: [
-        { letter: 'A', text: "Je recule, je propose une remise pour ne pas perdre la vente", value: "A \u2014 Recule, proposez une remise" },
-        { letter: 'B', text: "Pas de r\u00e9ponse standardis\u00e9e \u2014 j\u2019improvise, c\u2019est in\u00e9gal", value: "B \u2014 Improvise, pas de r\u00e9ponse standard" },
-        { letter: 'C', text: "Je tente de d\u00e9fendre le prix mais je ne sais pas retourner l\u2019objection", value: "C \u2014 D\u00e9fendez le prix sans retourner l\u2019objection." }
+        { letter: 'A', text: "Je recule, je propose une remise pour ne pas perdre la vente", value: "A  - Recule, proposez une remise" },
+        { letter: 'B', text: "Pas de r\u00e9ponse standardis\u00e9e  - j\u2019improvise, c\u2019est in\u00e9gal", value: "B  - Improvise, pas de r\u00e9ponse standard" },
+        { letter: 'C', text: "Je tente de d\u00e9fendre le prix mais je ne sais pas retourner l\u2019objection", value: "C  - D\u00e9fendez le prix sans retourner l\u2019objection." }
       ] },
     { text: "Ton vrai blocage pour doubler ton CA en 90 jours ?",
       options: [
-        { letter: 'A', text: "Quelque chose en moi \u2014 ma posture, ma l\u00e9gitimit\u00e9, comment je me per\u00e7ois", value: "A \u2014 Posture, l\u00e9gitimit\u00e9, perception de soi" },
-        { letter: 'B', text: "Un syst\u00e8me \u2014 un process qui ne d\u00e9pend pas de mon \u00e9tat du jour", value: "B \u2014 Besoin d\u2019un syst\u00e8me/process" },
-        { letter: 'C', text: "Ma\u00eetriser la fin du call \u2014 demande de d\u00e9cision, objections, closing", value: "C \u2014 Ma\u00eetriser la fin du call, closing." }
+        { letter: 'A', text: "Quelque chose en moi  - ma posture, ma l\u00e9gitimit\u00e9, comment je me per\u00e7ois", value: "A  - Posture, l\u00e9gitimit\u00e9, perception de soi" },
+        { letter: 'B', text: "Un syst\u00e8me  - un process qui ne d\u00e9pend pas de mon \u00e9tat du jour", value: "B  - Besoin d\u2019un syst\u00e8me/process" },
+        { letter: 'C', text: "Ma\u00eetriser la fin du call  - demande de d\u00e9cision, objections, closing", value: "C  - Ma\u00eetriser la fin du call, closing." }
       ] }
   ];
 
@@ -176,20 +176,20 @@
     A: { ghlValue: "L'Identit\u00e9 Sabot\u00e9e", badge: 'Profil A', emoji: '\ud83d\udc51',
       title: "L\u2019<em>Identit\u00e9 Sabot\u00e9e</em>",
       intro: "Tu n\u2019as pas un probl\u00e8me de technique. Tu as un probl\u00e8me de <strong>permission</strong>. Ton cerveau n\u2019a pas encore int\u00e9gr\u00e9 que tu m\u00e9rites le prix que tu sais valoir. R\u00e9sultat : tu h\u00e9sites au moment d\u2019annoncer, tu justifies ce qui ne devrait pas \u00eatre justifi\u00e9, et tu laisses partir des clients que tu aurais pu closer.",
-      neuro: { title: "Ce qui se passe dans ton cerveau", text: "L\u2019<strong>amygdale s\u2019active au moment de demander de l\u2019argent</strong>, comme si c\u2019\u00e9tait une menace sociale. Ce n\u2019est pas un d\u00e9faut de caract\u00e8re \u2014 c\u2019est neurologique. Le circuit limbique associe \u00abdemander son prix\u00bb \u00e0 un risque de rejet. Chez les femmes entrepreneures, cette r\u00e9ponse est amplifi\u00e9e par des ann\u00e9es de conditionnement social. Et \u00e7a se reprogramme." },
-      cost: { title: "Ce que \u00e7a te co\u00fbte", text: "Des ventes perdues avant m\u00eame d\u2019avoir propos\u00e9. Des prix en-dessous de ta valeur r\u00e9elle. Des remises automatiques que personne n\u2019a demand\u00e9es. <strong>Ce profil est souvent celui des personnes les plus comp\u00e9tentes \u2014 et les plus sous-pay\u00e9es.</strong>" }
+      neuro: { title: "Ce qui se passe dans ton cerveau", text: "L\u2019<strong>amygdale s\u2019active au moment de demander de l\u2019argent</strong>, comme si c\u2019\u00e9tait une menace sociale. Ce n\u2019est pas un d\u00e9faut de caract\u00e8re  - c\u2019est neurologique. Le circuit limbique associe \u00abdemander son prix\u00bb \u00e0 un risque de rejet. Chez les femmes entrepreneures, cette r\u00e9ponse est amplifi\u00e9e par des ann\u00e9es de conditionnement social. Et \u00e7a se reprogramme." },
+      cost: { title: "Ce que \u00e7a te co\u00fbte", text: "Des ventes perdues avant m\u00eame d\u2019avoir propos\u00e9. Des prix en-dessous de ta valeur r\u00e9elle. Des remises automatiques que personne n\u2019a demand\u00e9es. <strong>Ce profil est souvent celui des personnes les plus comp\u00e9tentes  - et les plus sous-pay\u00e9es.</strong>" }
     },
     B: { ghlValue: "Le Syst\u00e8me Fant\u00f4me", badge: 'Profil B', emoji: '\ud83d\udd27',
       title: "Le <em>Syst\u00e8me Fant\u00f4me</em>",
       intro: "Tu vends. Tu as des clients. Ton CA existe. Mais il repose sur toi \u00e0 100%. Quand tu es en forme, \u00e7a marche. Quand tu es absent ou d\u00e9bord\u00e9, \u00e7a s\u2019arr\u00eate. <strong>Ce n\u2019est pas un business. C\u2019est un emploi que tu t\u2019es cr\u00e9\u00e9.</strong>",
-      neuro: { title: "Ce qui se passe dans ton cerveau", text: "Le <strong>biais de contr\u00f4le</strong> est en jeu : la dopamine r\u00e9compense l\u2019action directe et personnelle. Ton cerveau a appris que \u00abvendre soi-m\u00eame = r\u00e9sultat\u00bb. Donc il te pousse \u00e0 tout faire toi-m\u00eame, m\u00eame quand c\u2019est contre ton int\u00e9r\u00eat \u00e0 long terme. Ce n\u2019est pas un probl\u00e8me de d\u00e9l\u00e9gation \u2014 c\u2019est un pattern neurochimique." },
-      cost: { title: "Ce que \u00e7a te co\u00fbte", text: "Un CA qui plafonne au niveau de ce que tu peux faire seul\u00b7e en un mois. Des cycles d\u2019\u00e9puisement/reprise. <strong>Tu ne scales pas \u2014 tu t\u2019\u00e9puises.</strong> Et les vacances sont un luxe que ton business ne peut pas se permettre." }
+      neuro: { title: "Ce qui se passe dans ton cerveau", text: "Le <strong>biais de contr\u00f4le</strong> est en jeu : la dopamine r\u00e9compense l\u2019action directe et personnelle. Ton cerveau a appris que \u00abvendre soi-m\u00eame = r\u00e9sultat\u00bb. Donc il te pousse \u00e0 tout faire toi-m\u00eame, m\u00eame quand c\u2019est contre ton int\u00e9r\u00eat \u00e0 long terme. Ce n\u2019est pas un probl\u00e8me de d\u00e9l\u00e9gation  - c\u2019est un pattern neurochimique." },
+      cost: { title: "Ce que \u00e7a te co\u00fbte", text: "Un CA qui plafonne au niveau de ce que tu peux faire seul\u00b7e en un mois. Des cycles d\u2019\u00e9puisement/reprise. <strong>Tu ne scales pas  - tu t\u2019\u00e9puises.</strong> Et les vacances sont un luxe que ton business ne peut pas se permettre." }
     },
     C: { ghlValue: "Le Closing Rat\u00e9", badge: 'Profil C', emoji: '\ud83c\udfaf',
       title: "Le <em>Closing Rat\u00e9</em>",
       intro: "Tu as le plus frustrant des profils. Tu fais presque tout bien. Tu attires. Tu engages. Tes calls se passent bien. Et puis \u00e0 la fin, quelque chose l\u00e2che. Le prospect dit \u00abje vais r\u00e9fl\u00e9chir\u00bb et dispara\u00eet.",
-      neuro: { title: "Ce qui se passe dans ton cerveau", text: "Ton cerveau per\u00e7oit la <strong>demande de d\u00e9cision comme une confrontation</strong>. Mont\u00e9e de cortisol. L\u2019instinct prend le dessus \u2014 \u00e9viter. Donc tu rallonges l\u2019appel, tu sur-expliques, tu n\u2019oses pas te taire apr\u00e8s avoir demand\u00e9. <strong>Les 5 derni\u00e8res minutes d\u2019un call = 80% du r\u00e9sultat.</strong> Et c\u2019est la partie la moins travaill\u00e9e." },
-      cost: { title: "Ce que \u00e7a te co\u00fbte", text: "Des dizaines de prospects qualifi\u00e9s qui repartent \u00abpour r\u00e9fl\u00e9chir\u00bb et ne reviennent jamais. Un taux de closing bien en-dessous de ton potentiel r\u00e9el. <strong>Ce profil est celui des personnes \u00e0 3 mois d\u2019un changement radical \u2014 si le bon travail est fait sur les 5 derni\u00e8res minutes du call.</strong>" }
+      neuro: { title: "Ce qui se passe dans ton cerveau", text: "Ton cerveau per\u00e7oit la <strong>demande de d\u00e9cision comme une confrontation</strong>. Mont\u00e9e de cortisol. L\u2019instinct prend le dessus  - \u00e9viter. Donc tu rallonges l\u2019appel, tu sur-expliques, tu n\u2019oses pas te taire apr\u00e8s avoir demand\u00e9. <strong>Les 5 derni\u00e8res minutes d\u2019un call = 80% du r\u00e9sultat.</strong> Et c\u2019est la partie la moins travaill\u00e9e." },
+      cost: { title: "Ce que \u00e7a te co\u00fbte", text: "Des dizaines de prospects qualifi\u00e9s qui repartent \u00abpour r\u00e9fl\u00e9chir\u00bb et ne reviennent jamais. Un taux de closing bien en-dessous de ton potentiel r\u00e9el. <strong>Ce profil est celui des personnes \u00e0 3 mois d\u2019un changement radical  - si le bon travail est fait sur les 5 derni\u00e8res minutes du call.</strong>" }
     }
   };
 
@@ -312,7 +312,7 @@
     h += '<p class="profile-intro">' + p.intro + '</p>';
     h += '<div class="insight-block"><h4>' + p.neuro.title + '</h4><p>' + p.neuro.text + '</p></div>';
     h += '<div class="cost-block"><h4>' + p.cost.title + '</h4><p>' + p.cost.text + '</p></div>';
-    h += '<div class="cta-box"><p><strong>Ce diagnostic ne te donne pas une liste de techniques.</strong><br>Ce qui change vraiment, c\u2019est quand le pattern se d\u00e9fait \u00e0 la source \u2014 pas quand on applique un script par-dessus.</p>';
+    h += '<div class="cta-box"><p><strong>Ce diagnostic ne te donne pas une liste de techniques.</strong><br>Ce qui change vraiment, c\u2019est quand le pattern se d\u00e9fait \u00e0 la source  - pas quand on applique un script par-dessus.</p>';
     h += '<button class="btn" onclick="openBooking()">R\u00e9server un appel avec Emy \u2192</button></div></div>';
     document.getElementById('result-content').innerHTML = h;
     showScreen('s-result');
